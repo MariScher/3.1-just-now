@@ -1,9 +1,9 @@
 fun main() {
-    val userTime = 12500
+    val userTime: UInt = 12500U
 
     val convertTime = when (userTime) {
-        in 61..3600 -> userTime / 60
-        in 3601..86_400 -> userTime / 3600
+        in 61U..3600U -> userTime / 60u
+        in 3601U..86_400U -> userTime / 3600U
         else -> userTime
     }
 
@@ -11,29 +11,29 @@ fun main() {
     println("был(а) $result")
 }
 
-fun agoToText(userTime: Int, convertTime: Int, minutesText: String, hoursText: String): String {
+fun agoToText(userTime: UInt, convertTime: UInt, minutesText: String, hoursText: String): String {
     return when (userTime) {
-        in 0..60 -> "только что"
-        in 61..3600 -> "$convertTime $minutesText назад"
-        in 3601..86_400 -> "$convertTime $hoursText назад"
-        in 86_401..172_800 -> "сегодня"
-        in 172_801..259_200 -> "вчера"
+        in 0U..60U -> "только что"
+        in 61U..3600U -> "$convertTime $minutesText назад"
+        in 3601U..86_400U -> "$convertTime $hoursText назад"
+        in 86_401U..172_800U -> "сегодня"
+        in 172_801U..259_200U -> "вчера"
         else -> "давно"
     }
 }
 
-fun minutesText(convertTime: Int): String {
-    return if (convertTime % 10 == 1 && convertTime != 11) {
+fun minutesText(convertTime: UInt): String {
+    return if (convertTime % 10U == 1U && convertTime != 11U) {
         "минуту"
-    } else if (convertTime % 10 in 2..4) {
+    } else if (convertTime % 10U in 2U..4U) {
         "минуты"
     } else {
         "минут"
     }
 }
 
-fun hoursText(convertTime: Int) = when (convertTime) {
-    1 -> "час"
-    in 2..4 -> "часа"
+fun hoursText(convertTime: UInt) = when (convertTime) {
+    1U -> "час"
+    in 2U..4U -> "часа"
     else -> "часов"
 }
