@@ -33,7 +33,7 @@ fun minutesText(convertTime: UInt): String {
 }
 
 fun hoursText(convertTime: UInt) = when (convertTime) {
-    1U -> "час"
-    in 2U..4U -> "часа"
+    1U, 21U -> "час"
+    in 2U..4U, 22U, 23U, 24U -> "часа"
     else -> "часов"
 }
